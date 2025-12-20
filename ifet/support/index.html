@@ -62,6 +62,7 @@
           <button type="submit" class="btn btn-primary" data-i18n="btnSend">Send</button>
         </div>
       </form>
+      <div id="sendError" class="send-error" hidden></div>
 
       <div class="creator-note">
         <div class="creator-note-title" data-i18n="creatorTitle">Want to talk directly with the creator?</div>
@@ -161,10 +162,19 @@
         fileNameDiv.style.display = 'none';
       }
     }
+
+    // Expose for inline HTML handlers (onsubmit/onchange)
+    window.updateFileName = updateFileName;
     
     // Submit support request
     async function submitSupportRequest(event) {
       event.preventDefault();
+
+      const errEl = document.getElementById('sendError');
+      if (errEl) {
+        errEl.hidden = true;
+        errEl.textContent = '';
+      }
       
       const firstName = (document.getElementById('firstName').value || '').trim();
       const email = document.getElementById('email').value;
@@ -205,6 +215,11 @@
             timestamp: new Date().toISOString()
           })
         });
+
+        if (!response.ok) {
+          const body = await response.text().catch(() => '');
+          throw new Error(`HTTP ${response.status}: ${body || 'Request failed'}`);
+        }
         
         // Show success message
         document.getElementById('supportForm').style.display = 'none';
@@ -214,12 +229,19 @@
         setTimeout(() => window.close(), 4000);
       } catch (error) {
         console.error('Failed to send support request:', error);
-        // Still show success to user
-        document.getElementById('supportForm').style.display = 'none';
-        document.getElementById('successMessage').style.display = 'block';
-        setTimeout(() => window.close(), 4000);
+        if (errEl) {
+          errEl.hidden = false;
+          errEl.textContent =
+            'Failed to send. Please try again.\n\n' +
+            String(error && error.message ? error.message : error);
+        } else {
+          alert('Failed to send. Please try again.\n\n' + (error && error.message ? error.message : error));
+        }
       }
     }
+
+    // Expose for inline HTML handler (onsubmit)
+    window.submitSupportRequest = submitSupportRequest;
     })();
   </script>
 </body>
