@@ -1,0 +1,17 @@
+name = "ifet-telegram-feedback"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+routes = [
+  { pattern = "ifet.webexport.pro/api/ifet/feedback*", zone_name = "webexport.pro" }
+]
+
+# Deploy this worker and bind a route like:
+# ifet.webexport.pro/api/ifet/feedback*
+#
+# Then set secrets:
+# wrangler secret put BOT_TOKEN
+# wrangler secret put CHAT_ID
+# wrangler secret put ALLOWED_ORIGIN   (example: https://ifet.webexport.pro)
+
+
