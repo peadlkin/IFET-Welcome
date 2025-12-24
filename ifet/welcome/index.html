@@ -3,274 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instagram Follower Export Tool — Welcome</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="../icons/icon32.png?v=20251219">
-  <link rel="icon" type="image/png" sizes="16x16" href="../icons/icon16.png?v=20251219">
-  <link rel="apple-touch-icon" sizes="128x128" href="../icons/icon128.png?v=20251219">
-  <link rel="preload" href="../fonts/InterVariable.woff2?v=20251221" as="font" type="font/woff2" crossorigin>
+  <title>Welcome to IFET!</title>
   <link rel="stylesheet" href="../common.css">
-  <style>
-    body { justify-content: flex-start; }
-
-    .welcome-shell { max-width: 918px; }
-
-    .welcome-shell { padding-top: 22px; }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      color: var(--text-primary);
-    }
-
-    .brand-badge {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, rgba(106,61,240,0.18), rgba(124,77,255,0.08));
-      border: 1px solid rgba(233,236,239,0.95);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-      font-weight: 900;
-      color: var(--accent-blue);
-      user-select: none;
-    }
-
-    .brand-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-      border: 1px solid rgba(233,236,239,0.95);
-      display: block;
-      user-select: none;
-    }
-
-    .lang-select {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border: 1px solid rgba(233,236,239,0.95);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 10;
-    }
-
-    .lang-select label {
-      font-size: 12px;
-      color: var(--text-secondary);
-      font-weight: 700;
-    }
-
-    .lang-select select {
-      border: none;
-      background: transparent;
-      font-weight: 800;
-      color: var(--text-primary);
-      font-size: 12px;
-      outline: none;
-      cursor: pointer;
-      padding: 2px 6px;
-    }
-
-    /* Click-to-hint overlay (points to the Chrome puzzle icon) */
-    .puzzle-hint {
-      position: fixed;
-      /* Positioned dynamically via JS next to the language pill */
-      left: 18px;
-      top: 18px;
-      z-index: 12;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(-6px) translateX(0);
-      transition: opacity 180ms ease, transform 180ms ease;
-    }
-
-    .puzzle-hint.visible {
-      opacity: 1;
-      transform: translateY(0) translateX(0);
-      animation: hintFloat 1.6s ease-in-out infinite;
-    }
-
-    @keyframes hintFloat {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0); }
-    }
-
-    .puzzle-hint-inner {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(233,236,239,0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.10);
-    }
-
-    .puzzle-hint-arrow {
-      width: 28px;
-      height: 28px;
-      flex: 0 0 28px;
-      color: var(--accent-blue);
-    }
-
-    .puzzle-hint-text {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--text-primary);
-      white-space: nowrap;
-    }
-
-    .welcome-title {
-      text-align: left;
-      font-size: 34px;
-      margin-bottom: 12px;
-    }
-
-    .welcome-subtitle {
-      text-align: left;
-      margin-bottom: 22px;
-      max-width: 684px;
-      font-size: 18px;
-    }
-
-    .steps {
-      margin-top: 10px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .step-line {
-      display: flex;
-      gap: 10px;
-      line-height: 1.5;
-      font-size: 17px;
-      color: var(--text-primary);
-    }
-
-    .step-line .n {
-      width: 22px;
-      flex: 0 0 22px;
-      color: var(--accent-blue);
-      font-weight: 900;
-      text-align: right;
-      font-size: 18px; /* one size larger than step text */
-    }
-
-    .media {
-      margin: 10px 0 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(233,236,239,0.95);
-      background: rgba(248,249,250,0.9);
-      overflow: hidden;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.06);
-    }
-
-    .media img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    @media (max-width: 640px) {
-      .welcome-shell { max-width: 576px; }
-      .welcome-title { font-size: 26px; }
-      .welcome-subtitle { font-size: 16px; }
-      .step-line { font-size: 15px; }
-      .step-line .n { font-size: 16px; }
-      .lang-select {
-        top: 12px;
-        right: 12px;
-      }
-      .puzzle-hint {
-        top: 12px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <div class="container welcome-shell">
-    <div class="lang-select">
-      <label for="langSelect" data-i18n="langLabel">Language</label>
-      <select id="langSelect" aria-label="Language">
-        <option value="en">EN</option>
-        <option value="ru">RU</option>
-      </select>
-    </div>
-
-    <div class="puzzle-hint" id="puzzleHint" aria-hidden="true">
-      <div class="puzzle-hint-inner">
-        <span class="puzzle-hint-text" data-i18n="hintText">Pin it here</span>
-        <svg class="puzzle-hint-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <!-- vertical arrow up -->
-          <path d="M12 19 V7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M7 11 L12 6 L17 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+  <div class="container">
+    <div class="panel">
+      <h1 class="page-title" data-i18n="title">Welcome to IFET! 👋</h1>
+      <p class="page-subtitle" data-i18n="subtitle">Instagram Follower Export Tool - Export followers and following lists easily</p>
+      
+      <ol class="instruction-list">
+        <li data-i18n="step1">Open any Instagram profile in your browser</li>
+        <li data-i18n="step2">Click the IFET extension icon in your browser toolbar</li>
+        <li data-i18n="step3">Choose "Followers" or "Following" and click "Start exporting"</li>
+        <li data-i18n="step4">Wait for the export to complete, then save as CSV or XLSX</li>
+      </ol>
+      
+      <div class="button-group">
+        <button class="btn btn-primary" onclick="window.close()" data-i18n="btnGetStarted">Get Started</button>
       </div>
     </div>
-
-    <div class="panel panel-soft">
-      <h1 class="page-title welcome-title" data-i18n="title">Instagram Follower Export Tool is installed!</h1>
-      <p class="page-subtitle welcome-subtitle" data-i18n="subtitle">Start exporting in 4 clicks</p>
-
-      <div class="steps" aria-label="Steps">
-        <div class="step-line"><span class="n">1.</span><span data-i18n="s1">Click the puzzle icon</span></div>
-        <div class="step-line"><span class="n">2.</span><span data-i18n="s2">Pin the extension</span></div>
-        <div class="media">
-          <!-- Put your first image here -->
-          <img id="imgPin" src="./img/pin.png" alt="" data-i18n="imgAlt1">
-        </div>
-
-        <div class="step-line"><span class="n">3.</span><span data-i18n="s3">Open the Instagram follower export tool</span></div>
-        <div class="step-line"><span class="n">4.</span><span data-i18n="s4">Enter an Instagram profile and click Start exporting</span></div>
-        <div class="media">
-          <!-- Put your second image here -->
-          <img id="imgStart" src="./img/start.png" alt="" data-i18n="imgAlt2">
-        </div>
-      </div>
+    
+    <div class="footer">
+      <p data-i18n="footer">Need help? <a href="../support/index.html?lang={{LANG}}" data-i18n-link="support">Contact Support</a></p>
     </div>
   </div>
   
   <script src="../lang.js"></script>
   <script>
-    (function () {
     // Translations
     const translations = {
       en: {
-        langLabel: 'Language',
-        title: 'Instagram Follower Export Tool is installed!',
-        subtitle: 'Start exporting in 4 clicks',
-        s1: 'Click the puzzle icon',
-        s2: 'Pin the extension',
-        s3: 'Open the Instagram follower export tool',
-        s4: 'Enter an Instagram profile and click Start exporting',
-        hintText: 'Pin it here',
-        imgAlt1: '',
-        imgAlt2: ''
+        title: 'Welcome to IFET! 👋',
+        subtitle: 'Instagram Follower Export Tool - Export followers and following lists easily',
+        step1: 'Open any Instagram profile in your browser',
+        step2: 'Click the IFET extension icon in your browser toolbar',
+        step3: 'Choose "Followers" or "Following" and click "Start exporting"',
+        step4: 'Wait for the export to complete, then save as CSV or XLSX',
+        btnGetStarted: 'Get Started',
+        footer: 'Need help?',
+        support: 'Contact Support'
       },
       ru: {
-        langLabel: 'Язык',
-        title: 'Instagram Follower Export Tool установлен!',
-        subtitle: 'Начните экспорт в 4 клика',
-        s1: 'Нажмите на значок пазла',
-        s2: 'Закрепите расширение',
-        s3: 'Откройте Instagram follower export tool',
-        s4: 'Введите профиль Instagram и нажмите “Начать экспорт”',
-        hintText: 'Можно начать отсюда',
-        imgAlt1: '',
-        imgAlt2: ''
+        title: 'Добро пожаловать в IFET! 👋',
+        subtitle: 'Instagram Follower Export Tool - Экспорт подписчиков и подписок легко и быстро',
+        step1: 'Откройте любой профиль Instagram в браузере',
+        step2: 'Нажмите на иконку расширения IFET в панели браузера',
+        step3: 'Выберите "Подписчики" или "Подписки" и нажмите "Начать экспорт"',
+        step4: 'Дождитесь завершения экспорта, затем сохраните в CSV или XLSX',
+        btnGetStarted: 'Начать работу',
+        footer: 'Нужна помощь?',
+        support: 'Связаться с поддержкой'
       }
     };
     
@@ -278,60 +61,13 @@
     function initTranslations() {
       if (window.IFET && window.IFET.initTranslations) {
         window.IFET.initTranslations(translations);
-        const lang = window.IFET.currentLang || 'en';
-
-        // Setup language selector (EN/RU) -> updates ?lang=...
-        const select = document.getElementById('langSelect');
-        if (select) {
-          select.value = (lang === 'ru') ? 'ru' : 'en';
-          select.addEventListener('change', () => {
-            const next = (select.value === 'ru') ? 'ru' : 'en';
-            const url = new URL(window.location.href);
-            url.searchParams.set('lang', next);
-            window.location.href = url.toString();
-          });
+        
+        // Update footer link with current language
+        const footerText = document.querySelector('.footer p');
+        if (footerText && window.IFET.isLanguageSupported) {
+          const lang = window.IFET.currentLang;
+          footerText.innerHTML = translations[lang].footer + ' <a href="../support/index.html?lang=' + lang + '">' + translations[lang].support + '</a>';
         }
-
-        // Click images -> show hint pointing to the puzzle
-        const hintEl = document.getElementById('puzzleHint');
-        let hideTimer = null;
-        const showHint = () => {
-          if (!hintEl) return;
-          if (hideTimer) clearTimeout(hideTimer);
-
-          // Position hint slightly left of the language pill (so it doesn't look attached to it)
-          try {
-            const langEl = document.querySelector('.lang-select');
-            if (langEl) {
-              // Measure hint offscreen (without flicker)
-              const prevVis = hintEl.classList.contains('visible');
-              hintEl.classList.add('visible');
-              const hintRect = hintEl.getBoundingClientRect();
-              hintEl.classList.toggle('visible', prevVis);
-
-              const langRect = langEl.getBoundingClientRect();
-              const gap = 12;
-              const left = Math.max(12, Math.round(langRect.left - hintRect.width - gap));
-              const top = Math.max(12, Math.round(langRect.top));
-              hintEl.style.left = `${left}px`;
-              hintEl.style.top = `${top}px`;
-            }
-          } catch (e) {}
-
-          // Restart animation reliably
-          hintEl.classList.remove('visible');
-          void hintEl.offsetWidth; // force reflow
-          hintEl.classList.add('visible');
-
-          hideTimer = setTimeout(() => {
-            hintEl.classList.remove('visible');
-          }, 3200);
-        };
-
-        const imgPin = document.getElementById('imgPin');
-        const imgStart = document.getElementById('imgStart');
-        if (imgPin) imgPin.addEventListener('click', showHint);
-        if (imgStart) imgStart.addEventListener('click', showHint);
       } else {
         // Retry if lang.js hasn't loaded yet
         setTimeout(initTranslations, 50);
@@ -343,7 +79,6 @@
     } else {
       initTranslations();
     }
-    })();
   </script>
 </body>
 </html>

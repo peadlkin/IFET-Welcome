@@ -1,6 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <!-- Exact match to icon128.png -->
-  <image href="icon128.png" x="0" y="0" width="128" height="128" preserveAspectRatio="xMidYMid meet" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <!-- Instagram-like warm gradient (matches the new PNG style) -->
+    <linearGradient id="bg" x1="18%" y1="10%" x2="82%" y2="92%">
+      <stop offset="0%" stop-color="#FF5EC4"/>
+      <stop offset="35%" stop-color="#FF6A6A"/>
+      <stop offset="62%" stop-color="#FFB34D"/>
+      <stop offset="100%" stop-color="#FFD86B"/>
+    </linearGradient>
+    <!-- subtle top shine -->
+    <radialGradient id="shine" cx="25%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="60%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect width="128" height="128" rx="28" fill="url(#shine)"/>
+
+  <!-- Download glyph (bold black) -->
+  <g fill="#111111" filter="url(#soft)">
+    <!-- Arrow shaft -->
+    <rect x="58.5" y="26" width="11" height="44" rx="5.5"/>
+    <!-- Arrow head -->
+    <path d="M64 78 L43.5 57.5 C41.2 55.2 41.2 51.6 43.5 49.3 C45.8 47 49.4 47 51.7 49.3 L64 61.6 L76.3 49.3 C78.6 47 82.2 47 84.5 49.3 C86.8 51.6 86.8 55.2 84.5 57.5 Z"/>
+
+    <!-- Tray outline -->
+    <path d="M28 80
+             C28 74.477 32.477 70 38 70
+             L46 70
+             C49.314 70 52 72.686 52 76
+             C52 78.209 53.791 80 56 80
+             L72 80
+             C74.209 80 76 78.209 76 76
+             C76 72.686 78.686 70 82 70
+             L90 70
+             C95.523 70 100 74.477 100 80
+             L100 96
+             C100 103.732 93.732 110 86 110
+             L42 110
+             C34.268 110 28 103.732 28 96
+             Z"/>
+  </g>
 </svg>
 
 
