@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      { "source": "/bug/:path*", "destination": "/ifet/bug/:path*" },
+      { "source": "/support/:path*", "destination": "/ifet/support/:path*" },
+      { "source": "/uninstall/:path*", "destination": "/ifet/uninstall/:path*" },
+      { "source": "/welcome/:path*", "destination": "/ifet/welcome/:path*" },
+      { "source": "/", "destination": "/ifet/welcome" }
+    ]
+  }
