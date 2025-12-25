@@ -4,6 +4,7 @@
       { "source": "/support/:path*", "destination": "/ifet/support/:path*" },
       { "source": "/uninstall/:path*", "destination": "/ifet/uninstall/:path*" },
       { "source": "/welcome/:path*", "destination": "/ifet/welcome/:path*" },
-      { "source": "/", "destination": "/ifet/welcome" }
+      { "source": "/", "destination": "/ifet/welcome" },
+      { "source": "/__ping", "destination": "/ifet/bug" }
     ]
   }
